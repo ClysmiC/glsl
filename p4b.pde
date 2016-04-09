@@ -138,21 +138,21 @@ void draw() {
          texMapRange * down
         );
          
-       //bot left
-       vertex(
-         left + across * tileWidth,
-         top + down * tileHeight + tileHeight,
-         100,
-         texMapRange * across,
-         texMapRange * down + texMapRange
-        );
-         
        //bot right
        vertex(
          left + across * tileWidth + tileWidth,
          top + down * tileHeight + tileHeight,
          100,
          texMapRange * across + texMapRange,
+         texMapRange * down + texMapRange
+        );
+         
+       //bot left
+       vertex(
+         left + across * tileWidth,
+         top + down * tileHeight + tileHeight,
+         100,
+         texMapRange * across,
          texMapRange * down + texMapRange
         );
          
