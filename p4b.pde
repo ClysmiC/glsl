@@ -100,13 +100,13 @@ void draw() {
   shader(mountainShader);
   
   //subdivide into 40x40 quad
+  final int NUM_ROWS = 40;
+  final int NUM_COLS = NUM_ROWS;
+  
   final int left = -300;
   final int right = -50;
   final int top = 50;
   final int bottom = 300;
-  
-  final int NUM_ROWS = 40;
-  final int NUM_COLS = NUM_ROWS;
   
   final float tileWidth = (right - left) / (float)NUM_COLS;
   final float tileHeight = (bottom - top) / (float)NUM_ROWS;
