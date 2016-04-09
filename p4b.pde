@@ -98,6 +98,67 @@ void draw() {
   //Render the "Terrain" shader (card4)
   //You will need to subdivide this card in x and y
   shader(mountainShader);
+  
+  //subdivide into 40x40 quad
+  final int left = -300;
+  final int right = -50;
+  final int top = 50;
+  final int bottom = 300;
+  
+  final int NUM_ROWS = 40;
+  final int NUM_COLS = NUM_ROWS;
+  
+  final float tileWidth = (right - left) / (float)NUM_COLS;
+  final float tileHeight = (bottom - top) / (float)NUM_ROWS;
+  
+  final float texMapRange = 1.0 / NUM_ROWS; //texture is 0 to 1, so each subdivision is n to n + texMapRange)
+  
+  for (int down = 0; down < NUM_ROWS; down++)
+  {
+    for (int across = 0; across < NUM_COLS; across++)
+    {
+      beginShape();
+        texture(gradientTexture);
+        
+        //top left
+        vertex(
+          left + across * tileWidth,
+          top + down * tileHeight,
+          100,
+          texMapRange * across,
+          texMapRange * down
+         );
+         
+        //top right
+        vertex(
+          left + across * tileWidth + tileWidth,
+          top + down * tileHeight,
+          100,
+          texMapRange * across + texMapRange,
+          texMapRange * down
+         );
+         
+        //bot left
+        vertex(
+          left + across * tileWidth,
+          top + down * tileHeight + tileHeight,
+          100,
+          texMapRange * across,
+          texMapRange * down + texMapRange
+         );
+         
+        //bot right
+        vertex(
+          left + across * tileWidth + tileWidth,
+          top + down * tileHeight + tileHeight,
+          100,
+          texMapRange * across + texMapRange,
+          texMapRange * down + texMapRange
+         );
+         
+      endShape();
+    }
+  }
   beginShape();
     texture(gradientTexture);
     vertex(-300, 50,  100, 0,0);
