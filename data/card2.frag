@@ -46,7 +46,7 @@ void main() {
   {
     z = mandelbrotIterate(z, c);
 
-    if(sqrt(z.x * z.x + z.y * z.y) > 2.0)
+    if(length(z) > 2.0)
     {
       finalColor = missColor;
       break;
