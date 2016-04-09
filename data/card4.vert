@@ -26,13 +26,17 @@ varying vec4 vertTexCoordR;
 varying vec4 vertTexCoordL;
 
 void main() {
+    float depth = 150.0;
+
     vertColor = color;
     vertNormal = normalize(normalMatrix * normal);
-    vec4 vert = vertex;
-    gl_Position = transform * vert;
     vertLightDir = normalize(-lightNormal);
     vertTexCoord = texMatrix * vec4(texCoord, 1.0, 1.0);
-	
-	//your code here
 
+    vec4 texColor = texture2D(texture, vertTexCoord.xy);
+    float intensity = .3 * texColor.r + .6 * texColor.g + .1 * texColor.b;
+    
+    vec4 vert = vertex;
+    vert += vec4(vertNormal * depth * intensity, 0.0);
+    gl_Position = transform * vert;
 }

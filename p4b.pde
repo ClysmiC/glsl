@@ -115,58 +115,50 @@ void draw() {
   
   for (int down = 0; down < NUM_ROWS; down++)
   {
-    for (int across = 0; across < NUM_COLS; across++)
-    {
-      beginShape();
-        texture(gradientTexture);
+   for (int across = 0; across < NUM_COLS; across++)
+   {
+     beginShape();
+       texture(gradientTexture);
         
-        //top left
-        vertex(
-          left + across * tileWidth,
-          top + down * tileHeight,
-          100,
-          texMapRange * across,
-          texMapRange * down
-         );
+       //top left
+       vertex(
+         left + across * tileWidth,
+         top + down * tileHeight,
+         100,
+         texMapRange * across,
+         texMapRange * down
+        );
          
-        //top right
-        vertex(
-          left + across * tileWidth + tileWidth,
-          top + down * tileHeight,
-          100,
-          texMapRange * across + texMapRange,
-          texMapRange * down
-         );
+       //top right
+       vertex(
+         left + across * tileWidth + tileWidth,
+         top + down * tileHeight,
+         100,
+         texMapRange * across + texMapRange,
+         texMapRange * down
+        );
          
-        //bot left
-        vertex(
-          left + across * tileWidth,
-          top + down * tileHeight + tileHeight,
-          100,
-          texMapRange * across,
-          texMapRange * down + texMapRange
-         );
+       //bot left
+       vertex(
+         left + across * tileWidth,
+         top + down * tileHeight + tileHeight,
+         100,
+         texMapRange * across,
+         texMapRange * down + texMapRange
+        );
          
-        //bot right
-        vertex(
-          left + across * tileWidth + tileWidth,
-          top + down * tileHeight + tileHeight,
-          100,
-          texMapRange * across + texMapRange,
-          texMapRange * down + texMapRange
-         );
+       //bot right
+       vertex(
+         left + across * tileWidth + tileWidth,
+         top + down * tileHeight + tileHeight,
+         100,
+         texMapRange * across + texMapRange,
+         texMapRange * down + texMapRange
+        );
          
-      endShape();
-    }
+     endShape();
+   }
   }
-  beginShape();
-    texture(gradientTexture);
-    vertex(-300, 50,  100, 0,0);
-    vertex(-50,  50,  100, 1,0);
-    vertex(-50,  300, 100, 1,1);
-    vertex(-300, 300, 100, 0,1);
-  endShape();
-
 }
 
 void keyPressed(){
