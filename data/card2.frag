@@ -24,8 +24,13 @@ vec2 mandelbrotIterate(vec2 z, vec2 c)
 
 void main() {
   //hit for inside, miss for outside
-  vec4 hitColor = vec4 (1.0, 1.0, 1.0, 1.0); 
-  vec4 missColor = vec4 (1.0, 0.0, 0.0, 1.0);
+  vec4 hitColor = vec4 (1.0, 1.0, 1.0, 1.0);
+
+  //different colors for which iteration it misses on :)
+  vec4 missColor1_5 = vec4(0.0, 1.0, 0.0, 1.0);   //iteration 1-5
+  vec4 missColor6_10 = vec4(1.0, 0.0, 0.0, 1.0);  //iteration 6-10
+  vec4 missColor11_15 = vec4(0.0, 0.0, 1.0, 1.0); //etc.
+  vec4 missColor16_20 = vec4(0.0, 1.0, 1.0, 1.0);
 
   //x: [-2.1, .9]
   //y: [-1.5, 1.5]
@@ -42,13 +47,29 @@ void main() {
 
   vec4 finalColor = hitColor;
 
-  for(int i = 1; i <= 20; i++)
+  for (int i = 1; i <= 20; i++)
   {
     z = mandelbrotIterate(z, c);
 
-    if(length(z) > 2.0)
+    if (length(z) > 2.0)
     {
-      finalColor = missColor;
+      if (i <= 5)
+      {
+        finalColor = missColor1_5;  
+      }
+      else if (i <= 10)
+      {
+        finalColor = missColor6_10;
+      }
+      else if (i <= 15)
+      {
+        finalColor = missColor11_15;
+      }
+      else
+      {
+        finalColor = missColor16_20;
+      }
+      
       break;
     }
   }
