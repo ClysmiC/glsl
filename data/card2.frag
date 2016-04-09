@@ -18,11 +18,8 @@ vec2 mandelbrotIterate(vec2 z, vec2 c)
   //z: a + bi
   //z^2: a^2 + 2abi - b^2
   vec2 returnVal = vec2(z.x * z.x - z.y * z.y, 2 * z.x * z.y);
-
-  //don't forget to add c
-  returnVal = vec2(returnVal.x + c.x, returnVal.y + c.y);
   
-  return returnVal;
+  return returnVal + c;
 }
 
 void main() {
